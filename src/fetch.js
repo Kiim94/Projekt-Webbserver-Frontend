@@ -4,7 +4,8 @@
 //put/meny/:id
 //delete/meny/:id
 
-const url = "http://localhost:3000/api";
+const url = "https://projekt-webbserver.onrender.com/api";
+//"http://localhost:3000/api";
 
 //visa menyn. Ingen metod behövs
 export async function getMeny(){
