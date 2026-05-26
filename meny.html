@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>projekt-webbserver-frontend</title>
+  </head>
+  <body>
+    <header>
+      <h1 class="title">Café Bönan</h1>
+      <img src="hilmy-farras-coffe-cups (1).png" alt="Kaffe koppar" id="coffe-img">
+      <p class="tagline">Kaffe, smörgåsar och hembakat</p>
+      <nav>
+        <ul>
+            <li><a href="index.html">Start</a></li>
+            <li><a href="meny.html">Meny</a></li>
+            <li><a href="reviews">Omdömen</a></li>
+            <li><a href="about.html">Om</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="center-container">
+    <h2 class="start">Meny</h2>
+    <div class="menu-layout">
+      <section>
+        <h2>Drycker</h2>
+        <h3>Kalla drycker</h3>
+        <ul id="cold" class="menu-list"></ul>
+        <h3>Varma drycker</h3>
+        <ul id="hot" class="menu-list"></ul>
+      </section>
+      <section>
+        <h2>Mat & Mackor</h2>
+        <h3>Smörgåsar</h3>
+        <ul id="sandwich" class="menu-list"></ul>
+        <h3>Övrigt</h3>
+        <ul id="other" class="menu-list"></ul>
+      </section>
+    </div>
+    <p id="output"></p></div>
+    <script type="module" src="/src/menu.js"></script>
+    <footer>
+      <p>&copy; Café Bönan</p>
+      <a href="loginAdmin.html" class="admin-link">Admin</a>
+    </footer>
+  </body>
+</html>

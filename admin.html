@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>projekt-webbserver-frontend</title>
+  </head>
+  <body>
+    <header>
+      <button id="logoutBtn">Logga ut</button>
+    </header>
+    <div class="center-container">
+    <h1>Admin</h1>
+    <p>Du kan redigera eller lägga till nya rätter. Nya/uppdaterade rätter syns under input fälten nedan.</p>
+    <p>Klick på edit hos rätterna gör det möjligt att redigera dem. Vill inte uppdatera? Tryck på "uppdatera" knappen utan att ändra något så återställs formuläret.</p>
+    <p>Märk väl att namn och pris är obligatoriska att fylla i.</p>
+
+    <h2 id="edit-or-add">Lägg till ny rätt</h2>
+    <p id="message"></p>
+
+    <form id="addForm" class="form">
+        <input id="name" placeholder="Namn">
+        <input id="price" placeholder="Pris">
+        <select id="category">
+          <option value="hot_drinks">Varma drycker</option>
+          <option value="cold_drinks">Kalla drycker</option>
+          <option value="sandwich">Smörgåsar</option>
+          <option value="other">Övrigt</option>
+        </select>
+        <input id="description" placeholder="Beskrivning">
+        <input id="allergens" placeholder="Allergier: mjölk, nötter...">
+        <button id="addBtn" type="submit">Lägg till</button>
+    </form>
+    
+    <p id="output"></p></div>
+    <div id="appAdmin"></div>
+    <script type="module" src="/src/admin.js" defer></script>
+    <script type="module" src="/src/login.js" defer></script>
+    </body>
+</html>
