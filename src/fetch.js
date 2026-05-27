@@ -1,10 +1,6 @@
-//kommunikation med backend
-//get/meny
-//post/login + meny
-//put/meny/:id
-//delete/meny/:id
+//fetch: för att hämta data från backend
 
-const url = "https://projekt-webbserver.onrender.com/api";
+const url = import.meta.env.VITE_CAFE_URL;
 //"http://localhost:3000/api";
 
 //visa menyn. Ingen metod behövs

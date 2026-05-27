@@ -7,6 +7,7 @@ import { login, getMeny, deleteMenyItem } from "./fetch.js";
 const appDiv = document.getElementById("appAdmin");
 const form = document.getElementById("addForm");
 let editingId = null;
+const url = import.meta.env.VITE_CAFE_URL;
 
 document.addEventListener("DOMContentLoaded", () =>{
     requireAuth();
@@ -120,7 +121,7 @@ if(form){
 
         //edit
         if(editingId){
-            response = await fetch("http://localhost:3000/api/meny/" + editingId,
+            response = await fetch(url + "/meny/" + editingId,
                 {
                     method: "PUT",
                     headers:{
@@ -132,7 +133,7 @@ if(form){
             );
         //skapa ny rätt
         }else{
-            response = await fetch("http://localhost:3000/api/meny", {
+            response = await fetch(url + "/meny", {
                 method: "POST",
                     headers:{
                         "Content-Type": "application/json",
