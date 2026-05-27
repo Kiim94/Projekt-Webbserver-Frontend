@@ -37,7 +37,7 @@ async function loadMeny(){
     const renderItems = (items) => items.map(item => `
       <li class="meny-item">
       <div class="row">
-        <h4>${item.name}</h3>
+        <span class="dish-name">${item.name}</span>
         <span class="dots"></span>
         <span class="price">${item.price} kr</span>
       </div>

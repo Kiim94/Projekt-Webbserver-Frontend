@@ -22,24 +22,32 @@ body{
 .start{
   text-align:center;
 }
-h1, h2, h3, h4{
+h1, h2, h3{
   font-family: "Gorditas", serif;
 }
 h1{
   color:#a47148;
-  font-size:2.2rem;
+  font-size:2.4rem;
+  font-weight:600;
+  letter-spacing:0.5px;
 }
 h2{
-  font-size:1.6rem;
-  color:#68482e
+  font-size:1.8rem;
+  color:#4b2f1d;
 }
 h3{
+  display:inline-block;
+  padding:0.2rem 0;
+  margin-top:2rem;
+  margin-bottom:0.5rem;
   font-size:1.3rem;
-  color:#68482e; opacity: 0.9;
+  color:#7a5a42;
+
 }
-h4{
+.dish-name{
   font-size:1.1rem;
-  color:#68482e; opacity: 0.8;
+  color:#3f2a1f;
+  font-weight:600;
 }
 p{
   font-size:1rem;
@@ -54,11 +62,11 @@ p{
   .menu-list{
     list-style:none;
     padding:0;
-    margin:0;
+    margin-bottom:1.5rem;
     .meny-item{
-      padding:1rem;
-      border-bottom:1px solid #eee;
-      transition:background 0.3s;
+      padding:1rem 0;
+      border-bottom:1px solid rgba(0,0,0,0.08);
+      transition:background 0.2s ease;
       &:hover{
         background:#fafafa;
       }
@@ -80,17 +88,19 @@ p{
       }
       .allergens{
         font-size:0.8rem;
-        color:#b00020;
+        color:#a33;
+        opacity:0.8;
       }
     }
   }
   section{
     background: #fffaf5;
     padding:1.5rem;
-    border-radius:16px;
+    margin-bottom:2rem;
+    border-radius:10px;
     box-shadow:0 4px 12px rgba(0,0,0,0.05);
     h2{
-      margin-bottom:1rem;
+      margin-bottom:1.5rem;
     }
   }
 }
@@ -127,8 +137,8 @@ p{
 }
 //gemensamt utseende pris/kategori/description
 .price{
-  font-weight:600;
-  color: #a47148;
+  font-weight:500;
+  color: #333;
   white-space:nowrap;
 }
 .category{
