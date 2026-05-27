@@ -1,7 +1,6 @@
 //fetch: för att hämta data från backend
 
 const url = import.meta.env.VITE_CAFE_URL;
-//"http://localhost:3000/api";
 
 //visa menyn. Ingen metod behövs
 export async function getMeny(){

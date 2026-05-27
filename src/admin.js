@@ -25,7 +25,7 @@ const categoryNames = {
 
 function requireAuth(){
     console.log("ADMIN PAGE LOADED");
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     if(!token){
         window.location.href = "/loginAdmin.html";
         return false;
@@ -80,7 +80,7 @@ if(appDiv){
 //radera från menyn
 async function deleteItem(event){
     const id = event.target.dataset.id;
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     try{
         await deleteMenyItem(id, token);
         loadMeny();
@@ -109,7 +109,7 @@ async function editItem(event){
 if(form){
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
-        const token = localStorage.getItem("token");
+        const token = sessionStorage.getItem("token");
         const body = {
             name:  document.getElementById("name").value.trim(),
             price: Number(document.getElementById("price").value),
@@ -176,7 +176,7 @@ function initLogOut(){
     //logga ut -> man skickas till startsida, utloggad
     if(logoutBtn){
         logoutBtn.addEventListener("click", () => {
-            localStorage.removeItem("token");
+            sessionStorage.removeItem("token");
             window.location.href ="index.html";
         })
     }
