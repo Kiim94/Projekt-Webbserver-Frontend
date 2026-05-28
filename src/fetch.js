@@ -11,6 +11,36 @@ export async function getMeny(){
     return response.json();
 }
 
+export async function createMenyItem(data, token){
+    const response = await fetch(url + "/meny", {
+        method:"POST",
+        headers:{
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify(data)
+    })
+    if(!response.ok){
+        throw new Error("Kunde inte skapa ny meny-item");
+    }
+    return response.json();
+}
+
+export async function updateItem(id, data, token){
+    const response = await fetch(url + "/meny/" + id,{
+        method: "PUT",
+        headers:{
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify(data)
+    });
+    if(!response.ok){
+        throw new Error("Kunde inte uppdatera meny-item");
+    }
+    return response.json();
+}
+
 //logga in: hämta inskrivet användarnamn + lösenord, jämför mot databas
 export async function login(username, password){
     const response = await fetch(url + "/auth/login", {

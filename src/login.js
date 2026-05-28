@@ -24,6 +24,7 @@ function initLogin(){
         try{
             message.classList.remove("error", "success");
             const data = await login(username, password);
+            
             if(data && data.token){
                 sessionStorage.setItem("token", data.token);
                 message.innerText = "Inloggad!";

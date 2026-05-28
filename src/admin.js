@@ -1,11 +1,12 @@
 import './style.scss'
-import { login, getMeny, deleteMenyItem } from "./fetch.js";
+import { login, getMeny, deleteMenyItem, updateItem, createMenyItem } from "./fetch.js";
 //denna sida är bara för admin som är inloggad
 //admin ska kunna lägga till, redigera, ta bort maträtter
 
 //globala
 const appDiv = document.getElementById("appAdmin");
 const form = document.getElementById("addForm");
+const message = document.getElementById("message");
 let editingId = null;
 const url = import.meta.env.VITE_CAFE_URL;
 
@@ -40,8 +41,6 @@ function requireAuth(){
 async function loadMeny(){
     try{
         const meny = await getMeny();
-        output.classList.remove("error");
-        output.innerText = "";
         if(!meny.length){
             appDiv.innerHTML = "<p>Ingen meny tillgänglig</p>";
             return;
@@ -59,8 +58,8 @@ async function loadMeny(){
         
     }catch(err){
         console.error(err);
-        output.classList.add("error");
-        output.innerHTML = "<p>Fel vid hämtning av meny</p>";
+        message.classList.add("error");
+        message.innerHTML = "<p>Fel vid hämtning av meny</p>";
     }  
 }
 
@@ -86,7 +85,7 @@ async function deleteItem(event){
         loadMeny();
     }catch(err){
         console.error(err);
-        ouput.innerText = "Kunde inte ta bort meny-item"
+        message.innerText = "Kunde inte ta bort meny-item"
     }
 }
 
@@ -106,6 +105,7 @@ async function editItem(event){
 }
     
 //redigera rätt/lägg till ny rätt
+//if först för att kontrollera om formuläret finns på sidan
 if(form){
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -117,47 +117,38 @@ if(form){
             description:  document.getElementById("description").value.trim(),
             allergens: document.getElementById("allergens").value.trim()
         }
-        let response;
-
+        
         //edit
-        if(editingId){
-            response = await fetch(url + "/meny/" + editingId,
-                {
-                    method: "PUT",
-                    headers:{
-                        "Content-Type": "application/json",
-                        "Authorization": "Bearer " + token
-                    },
-                    body: JSON.stringify(body)
-                }
-            );
-        //skapa ny rätt
-        }else{
-            response = await fetch(url + "/meny", {
-                method: "POST",
-                    headers:{
-                        "Content-Type": "application/json",
-                        "Authorization": "Bearer " + token
-                    },
-                    body: JSON.stringify(body)
-                }
-            );
-            console.log("NYTT TILLAGT", body.name)
-            if(!body.name || !body.price ||!body.category || !body.description){
-                const message = document.getElementById("message");
-                message.innerHTML = "Fyll i alla fält!";
-                message.classList.add("error");
+        try{
+            if(editingId){
+                await updateItem(editingId, body, token);
+                message.innerHTML = "Rätt har blivit uppdaterad!";
+            }else{
+                await createMenyItem(body, token);
+                message.innerHTML = "Ny rätt tillagd!"
             }
-        }
-        if(response.ok){
+
+            message.classList.remove("error");
+            message.classList.add("success");
+
             editingId = null;
             form.reset();
-            updateFormUI();
+            updateFormUI();  
             loadMeny();
+
+            setTimeout(() => {
+                message.innerHTML = "";
+                message.classList.remove("success", "error");
+            }, 2000);
+        }catch(err){
+            console.error(err);
+            message.innerHTML = "Något gick fel, försök igen";
+            message.classList.add("error");
         }
     });
 }
 
+//funktion för att ändra text på knapp när man antingen lägger till nytt eller uppdaterar
 function updateFormUI(){
     const title = document.getElementById("edit-or-add");
     const btn = document.getElementById("addBtn");

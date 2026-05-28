@@ -11,15 +11,21 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 async function loadReviews(){
-    const reviews = await getReviews();
-
-    reviewContainer.innerHTML = reviews.map(rev => `
+    try{
+        //hämta recensioner
+        const reviews = await getReviews();
+        reviewContainer.innerHTML = reviews.map(rev => `
         <div class="review-card">
             <h3>${rev.name}</h3>
             <p>${"⭐".repeat(rev.rating)}<span>(${rev.rating}/5)</span></p>
             <p>${rev.message}</p>
             <p>${new Date(rev.createdAt).toLocaleDateString("sv")}</p>
         </div>`).join("");
+    }catch(err){
+        console.error(err);
+        reviewContainer.innerHTML = "<p>Kunde inte ladda recensioner. Försök igen senare</p>";
+    }
+    
 }
 
 reviewForm.addEventListener("submit", async (event) => {
