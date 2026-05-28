@@ -3,6 +3,7 @@ import { getReviews, postReview } from "./fetch.js";
 
 const reviewContainer = document.getElementById("reviews");
 const reviewForm = document.getElementById("reviewForm");
+const wrongMessage = document.getElementById("smthWrong");
 
 const list = document.getElementById("reviewList");
 
@@ -23,9 +24,9 @@ async function loadReviews(){
         </div>`).join("");
     }catch(err){
         console.error(err);
-        reviewContainer.innerHTML = "<p>Kunde inte ladda recensioner. Försök igen senare</p>";
+        wrongMessage.classList.add("error");
+        wrongMessage.innerHTML = "Kunde inte ladda recensioner. Försök igen senare";
     }
-    
 }
 
 reviewForm.addEventListener("submit", async (event) => {
@@ -34,17 +35,34 @@ reviewForm.addEventListener("submit", async (event) => {
     const name = document.getElementById("name").value.trim();
     const message = document.getElementById("message").value.trim();
     const rating = Number(document.querySelector("#rating").value);
+    
+    wrongMessage.classList.remove("error", "success");
 
-    if(!name ||!message ||!rating){
-        return;
-    }
     try{
+
+        if(!name ||!message ||!rating){
+            wrongMessage.classList.add("error");
+            wrongMessage.innerHTML = "Fyll i alla fält innan du skickar din recension"
+            return;
+        }
+
         await postReview({ name, message, rating });
 
         reviewForm.reset();
+
+        wrongMessage.classList.add("success");
+        wrongMessage.innerHTML = "Tack för din recension!"
+
+        setTimeout(() => {
+            wrongMessage.innerHTML = "";
+            wrongMessage.classList.remove("error", "success");
+        }, 2000);
+
         loadReviews();
+
     }catch(err){
         console.error(err);
-        alert("Kunde inte skicka recension")
+        wrongMessage.classList.add("error");
+        wrongMessage.innerHTML = "Kunde inte skicka recensionen. Försök igen senare."
     }
 })

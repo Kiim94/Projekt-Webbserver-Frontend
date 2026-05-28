@@ -117,9 +117,13 @@ if(form){
             description:  document.getElementById("description").value.trim(),
             allergens: document.getElementById("allergens").value.trim()
         }
-        
+
         //edit
         try{
+            
+            message.classList.remove("error", "success");
+            message.classList.add("success");
+
             if(editingId){
                 await updateItem(editingId, body, token);
                 message.innerHTML = "Rätt har blivit uppdaterad!";
@@ -128,18 +132,17 @@ if(form){
                 message.innerHTML = "Ny rätt tillagd!"
             }
 
-            message.classList.remove("error");
-            message.classList.add("success");
-
             editingId = null;
             form.reset();
             updateFormUI();  
             loadMeny();
 
+            //timeout för hur länge meddelande syns
             setTimeout(() => {
                 message.innerHTML = "";
                 message.classList.remove("success", "error");
             }, 2000);
+
         }catch(err){
             console.error(err);
             message.innerHTML = "Något gick fel, försök igen";

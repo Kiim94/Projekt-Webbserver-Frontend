@@ -52,6 +52,7 @@ async function loadMeny(){
       otherWrap.innerHTML = renderItems(other);
   }catch(err){
     output.classList.add("error");
-    output.innerText = err.message;
+    output.innerText = "Något gick fel. Testa att ladda om sidan eller vänta en stund";
+    console.error("Laddning av meny misslyckades: ", err);
   }
 }
