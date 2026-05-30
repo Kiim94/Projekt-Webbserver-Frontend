@@ -168,7 +168,7 @@ header{
     ul{
       display:flex;
       justify-content:center;
-      gap:1rem;
+      gap:2rem;
       list-style-type:none;
       margin:0;
       padding:0;
@@ -177,7 +177,7 @@ header{
       color:#fffaf5;
       text-decoration:none;
       font-weight:500;
-      font-size:1.2rem;
+      font-size:1.5rem;
       white-space:nowrap;
       &:hover{
         text-decoration:underline;
@@ -187,12 +187,11 @@ header{
 }
 
 #coffe-img{
-  width:100%;
-  max-width:150px;
+  width:150px;
   height:auto;
-  margin: 0.75rem auto;
-  object-fit:contain;
   opacity:0.7;
+  margin: 0.75rem auto;
+  display:block;
 }
 
 .title, .tagline{
@@ -304,7 +303,7 @@ button{
   color: gold;
 }
 
-.center-container img{
+.center-container #cafe-interior{
   width:100%;
   max-width:900px;
   aspect-ratio:16 / 9;
@@ -316,11 +315,11 @@ button{
 }
 
 //startsida
-.start-page, .opening-hours{
+.start-page, .opening-hours, .social-section{
   background: #fffaf5;
   padding:1.8rem;
   border-radius:10px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.05);
+  box-shadow:0 4px 12px rgba(0,0,0,0.2);
   margin-bottom:2rem;
 }
 .start-page{
@@ -349,6 +348,18 @@ button{
     }
   }
 }
+.img-wrap{
+  display:flex;
+  justify-content:center;
+  margin-bottom:2rem;
+  img{
+    width:100%;
+    max-width:700px;
+    max-height:350px;
+    object-fit:cover;
+    border-radius:10px;
+  }
+}
 .opening-hours ul{
   list-style:none;
   padding:0;
@@ -367,6 +378,24 @@ button{
   opacity:0.7;
 }
 
+.social-icons{
+  display:flex;
+  justify-content:center;
+  gap:2rem;
+  a{
+    text-decoration:none;
+    i{
+      font-size:2rem;
+      color: blue;
+      transition: 0.2s ease;
+      &:hover{
+        color: #8b6b4a;
+      transform: scale(1.1);
+      }
+    }
+  }
+}
+
 @media (max-width: 759px){
   html{
     font-size:14px;
@@ -374,8 +403,13 @@ button{
   .menu-layout{
     grid-template-columns:1fr;
   }
+  nav ul{
+    a{
+      font-size:1.4rem;
+    }
+  }
 }
-@media (max-media: 599px){
+@media (max-width: 599px){
   html{
     font-size:12px;
   }
