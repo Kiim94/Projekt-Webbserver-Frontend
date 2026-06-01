@@ -1,5 +1,6 @@
 import './style.scss'
 import { login, getMeny, deleteMenyItem, updateItem, createMenyItem } from "./fetch.js";
+import { initLogOut } from "./auth.js";
 //denna sida är bara för admin som är inloggad
 //admin ska kunna lägga till, redigera, ta bort maträtter
 
@@ -11,7 +12,7 @@ let editingId = null;
 const url = import.meta.env.VITE_CAFE_URL;
 
 document.addEventListener("DOMContentLoaded", () =>{
-    requireAuth();
+    if(!requireAuth()) return;
     loadMeny();
     initLogOut();
 });
@@ -161,17 +162,5 @@ function updateFormUI(){
     }else{
         title.innerText = "Lägg till ny rätt";
         btn.innerText = "Lägg till";
-    }
-}
-
-//logga ut
-function initLogOut(){
-    const logoutBtn = document.getElementById("logoutBtn");
-    //logga ut -> man skickas till startsida, utloggad
-    if(logoutBtn){
-        logoutBtn.addEventListener("click", () => {
-            sessionStorage.removeItem("token");
-            window.location.href ="index.html";
-        })
     }
 }

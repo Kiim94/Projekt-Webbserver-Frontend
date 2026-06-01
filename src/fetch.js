@@ -20,10 +20,11 @@ export async function createMenyItem(data, token){
         },
         body: JSON.stringify(data)
     })
+    const respData = await response.json();
     if(!response.ok){
         throw new Error("Kunde inte skapa ny meny-item");
     }
-    return response.json();
+    return respData;
 }
 
 export async function updateItem(id, data, token){
@@ -35,10 +36,11 @@ export async function updateItem(id, data, token){
         },
         body: JSON.stringify(data)
     });
+    const respData = await response.json();
     if(!response.ok){
         throw new Error("Kunde inte uppdatera meny-item");
     }
-    return response.json();
+    return respData;
 }
 
 //logga in: hämta inskrivet användarnamn + lösenord, jämför mot databas
@@ -50,10 +52,40 @@ export async function login(username, password){
         },
         body: JSON.stringify({ username, password })
     });
+    const data = await response.json();
     if(!response.ok){
-        throw new Error("Inloggning misslyckades")
+        throw new Error(data.error || "Inloggning misslyckades")
     }
-    return await response.json();
+    return data;
+}
+
+//skapa användare
+export async function register(username, password){
+    const response = await fetch(url + "/auth/register", {
+        method:"POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ username, password})
+    });
+    const data = await response.json();
+
+    if(!response.ok){
+        throw new Error(data.error || "Registreringen misslyckades!")
+    }
+    return data;
+}
+//hämta användare
+export async function getAdmins(token){
+    const response = await fetch(url +"/auth/admins" , {
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    });
+    if(!response.ok){
+        throw new Error("Kunde inte hämta admins");
+    }
+    return response.json();
 }
 
 
@@ -81,18 +113,6 @@ export async function postReview(data){
 }
 
 //RADERA. Ingen return response pga delete
-//radera review
-export async function deleteReview(id, token){
-    const response = await fetch(url + "/review/" + id, {
-        method: "DELETE",
-        headers: {
-            "Authorization": "Bearer " + token
-        }
-    });
-    if(!response.ok){
-        throw new Error("Kunde inte ta bort recension");
-    }
-}
 //radera menyitem
 export async function deleteMenyItem(id, token){
     const response = await fetch(url + "/meny/" + id,{
@@ -101,7 +121,24 @@ export async function deleteMenyItem(id, token){
             "Authorization": "Bearer " + token
         }
     });
+    const data = await response.json();
     if(!response.ok){
-        throw new Error("Kunde inte ta bort meny-item");
+        throw new Error(data.error || "Kunde inte ta bort admin");
     }
+    return data;
+}
+
+//radera användare
+export async function deleteAdmin(id, token){
+    const response = await fetch(url + "/auth/admins/" + id, {
+        method: "DELETE",
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    });
+    const data = await response.json();
+    if(!response.ok){
+        throw new Error(data.error || "Kunde inte ta bort admin");
+    }
+    return data;
 }

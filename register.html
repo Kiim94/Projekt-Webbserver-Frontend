@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Café Bönan</title>
+  </head>
+  <body>
+    <header class="adminHead">
+      <nav>
+        <button id="logoutBtn">Logga ut</button>
+        <div class="admin-links">
+            <a href="adminMeny.html">Meny</a>
+            <a href=register.html>Registrera</a>
+            <a href="delete.html">Radera admin</a>
+        </div>
+        </nav>
+    </header>
+    <div class="center-container">
+      <section class="admin-panel">
+        <a href="admin.html">Tillbaka</a>
+        <h1>Registrera admin</h1>
+
+        <form id="registerForm" class="form">
+            <input id="regName" placeholder="Användarnamn"></input>
+            <input id="regPassword" type="password" placeholder="Välj lösenord"></input>
+            <button type="submit" id="regBtn">Registrera</button>
+        </form>
+
+        <p id="regMessage"></p>
+          
+    <script type="module" src="/src/handleAdmins.js" defer></script>
+    </body>
+</html>

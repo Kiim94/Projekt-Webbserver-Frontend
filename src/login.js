@@ -30,7 +30,7 @@ function initLogin(){
                 message.innerText = "Inloggad!";
                 message.classList.remove("error");
                 message.classList.add("success");
-                window.location.href = "/admin.html";
+                window.location.href = "/adminMeny.html";
             }else{
                 message.innerText = data.error || "Fel inloggning!";
                 message.classList.add("error");
