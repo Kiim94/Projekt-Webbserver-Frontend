@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>Café Bönan</title>
   </head>
   <body>
@@ -31,23 +32,28 @@
     <div class="menu-layout">
       <section>
         <h2>Drycker</h2>
-        <h3>Kalla drycker</h3>
+        <h3 style="text-decoration:underline;">Kalla drycker</h3>
         <ul id="cold" class="menu-list"></ul>
-        <h3>Varma drycker</h3>
+        <h3 style="text-decoration:underline;">Varma drycker</h3>
         <ul id="hot" class="menu-list"></ul>
       </section>
       <section>
         <h2>Mat & Mackor</h2>
-        <h3>Smörgåsar</h3>
+        <h3 style="text-decoration:underline;">Smörgåsar</h3>
         <ul id="sandwich" class="menu-list"></ul>
-        <h3>Övrigt</h3>
+        <h3 style="text-decoration:underline;">Övrigt</h3>
         <ul id="other" class="menu-list"></ul>
       </section>
     </div>
     </div>
     <script type="module" src="/src/menu.js"></script>
     <footer>
-      <p>&copy; Café Bönan</p>
+      <div class="footer-content">
+        <p>&copy; Café Bönan</p>
+        <p><i class="fa-solid fa-location-dot"></i> Storgatan 12, Örnsköldsvik</p>
+        <p><i class="fa-solid fa-phone"></i> 0660-12 34 56</p>
+      </div>
+      
       <a href="loginAdmin.html" class="admin-link">Admin</a>
     </footer>
   </body>

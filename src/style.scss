@@ -113,6 +113,13 @@ p{
   max-width:900px;
   margin:0 auto;
 }
+
+.admin-panel{
+  background: #fffaf5;
+  padding:2rem;
+  border-radius:10px;
+   box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
 .center-container{
   max-width:900px;
   margin:0 auto;
@@ -236,8 +243,13 @@ footer{
   flex-direction:column;
   gap:1rem;
   width:100%;
-  max-width:900px;
+  max-width:550px;
+  button{
+    align-self:flex-start;
+    min-width:120px;
+  }
 }
+
 #addForm, #loginForm, #reviewForm{
   input, select, textarea{
     @include textarea-input;

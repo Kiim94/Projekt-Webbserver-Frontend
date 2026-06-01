@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>Café Bönan</title>
   </head>
   <body>
@@ -25,7 +26,6 @@
     <p>Lämna gärna en recension om ditt besök hos oss!</p>
     <p id="smthWrong"></p>
         <form id="reviewForm" class="form">
-          <label for="rating">Betyg</label>
           <select name="rating" id="rating">
             <option value="" disabled selected>Välj betyg</option>
             <option value="1">⭐</option>
@@ -42,7 +42,12 @@
     </div>
     <script type="module" src="/src/review.js"></script>
     <footer>
-      <p>&copy; Café Bönan</p>
+      <div class="footer-content">
+        <p>&copy; Café Bönan</p>
+        <p><i class="fa-solid fa-location-dot"></i> Storgatan 12, Örnsköldsvik</p>
+        <p><i class="fa-solid fa-phone"></i> 0660-12 34 56</p>
+      </div>
+      
       <a href="loginAdmin.html" class="admin-link">Admin</a>
     </footer>
   </body>
