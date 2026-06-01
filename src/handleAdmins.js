@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const regForm = document.getElementById("registerForm");
 const regMessage = document.getElementById("regMessage");
 //registrera användare
-if (regForm){
+if (regForm && regMessage){
     regForm.addEventListener("submit", async (e) => {
         e.preventDefault();
         regMessage.classList.remove("error", "success");
@@ -36,6 +36,9 @@ if (regForm){
 //Ladda alla användare till delete.html
 async function loadAdmins(){
     const container = document.getElementById("adminList");
+    if(!container){
+        return;
+    }
     try{
         const token = sessionStorage.getItem("token");
         const admins = await getAdmins(token);

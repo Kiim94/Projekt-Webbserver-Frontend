@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Café Bönan</title>
+  </head>
+  <body>
+    <header class="adminHead">
+      <nav>
+        <a href="#" id="logoutBtn">Logga ut</a>
+        <div class="admin-links">
+            <a href="adminMeny.html">Meny</a>
+            <a href=admin.html>Hantera admin</a>
+        </div>
+        </nav>
+    </header>
+    <div class="center-container">
+      <section class="admin-panel">
+        <h1>Hantera admin</h1>
+        <div class="admin-block">
+          <h2>Registrera admin</h2>
+          <p>Både användarnamn och lösenord behövs</p>
+            <form id="registerForm" class="form">
+              <input id="regName" placeholder="Användarnamn">
+              <input id="regPassword" type="password" placeholder="Välj lösenord">
+              <button type="submit" id="regBtn">Registrera</button>
+            </form>
+
+            <p id="regMessage"></p>
+        </div>
+        
+        <div class="admin-block">
+          <h2>Radera admin</h2>
+          <p>Så tråkigt att du vill lämna oss!</p>
+          <p>Välj vilken admin som ska tas bort:</p>
+        <div id="adminList"></div>
+        </div>
+        </section>
+        </div>
+    <script type="module" src="/src/handleAdmins.js" defer></script>
+    </body>
+</html>

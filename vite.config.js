@@ -11,8 +11,7 @@ export default defineConfig({
         loginAdmin: resolve(__dirname, 'loginAdmin.html'),
         meny: resolve(__dirname, 'meny.html'),
         reviews: resolve(__dirname, 'reviews.html'),
-        delete: resolve(__dirname, 'delete.html'),
-        register: resolve(__dirname, 'register.html')
+        handleAdmin: resolve(__dirname, 'admin.html'),
       }
     }
   }
