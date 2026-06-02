@@ -11,12 +11,14 @@ function initLogin(){
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
         message.classList.remove("error", "success");
-        message.innerText = "";
+        message.classList.add("loading");
+        message.innerText = "Loggar in...";
 
         const username = document.getElementById("username").value.trim();
         const password = document.getElementById("password").value;
         if(!username || !password){
             message.innerText = "Fyll i alla fält!";
+            message.classList.remove("loading");
             message.classList.add("error");
             return;
         }
@@ -28,16 +30,24 @@ function initLogin(){
             if(data && data.token){
                 sessionStorage.setItem("token", data.token);
                 message.innerText = "Inloggad!";
-                message.classList.remove("error");
+                message.classList.remove("error", "loading");
                 message.classList.add("success");
                 window.location.href = "/adminMeny.html";
             }else{
                 message.innerText = data.error || "Fel inloggning!";
+                message.classList.remove("loading");
                 message.classList.add("error");
             }
         }catch(err){
             console.log("CATCH ERROR:", err);
-            message.innerText = "Serverfel";
+            message.classList.remove("loading");
+
+            if(err.message === "Failed to fetch"){
+                message.innerText = "Servern håller på att vakna, försök igenom om några sekunder..."
+            }else{
+                message.innerText = err.message;
+            }
+            
             message.classList.add("error");
         }
     })

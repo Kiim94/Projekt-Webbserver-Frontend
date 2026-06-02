@@ -24,9 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
 //skriv ut maträtter till meny
 async function loadMeny(){
   try{
-    const meny = await getMeny();
-
+    output.classList.add("loading");
+    output.innerText="Väcker servern och hämtar menyn..."
     output.classList.remove("error");
+
+    const meny = await getMeny();
+    output.classList.remove("loading");
+    output.innerText="";
+
+    
 
     //istället för att skriva ut hela menyn huller om buller, gör kategorier
     const hot = meny.filter(item => item.category === "hot_drinks");

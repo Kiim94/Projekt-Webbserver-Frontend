@@ -1,10 +1,11 @@
+@use "colors" as color;
 @import url("https://fonts.googleapis.com/css2?family=Gorditas:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Gorditas:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 @mixin textarea-input{
   width:100%;
   padding:0.9rem;
-  border:2px solid #d2b49c;
+  border:2px solid color.$surface-alt;
   border-radius:10px;
   font-size: 1rem;
   outline:none;
@@ -15,9 +16,9 @@ html{
 }
 body{
   font-family: "Poppins", Helvetica, sans-serif;
-  background: #fffaf5;
+  background: color.$surface;
   margin:0;
-  box-shadow:inset 0 0 0 10px #a47148;
+  box-shadow:inset 0 0 0 10px color.$primary;
 }
 .start{
   text-align:center;
@@ -26,14 +27,14 @@ h1, h2, h3{
   font-family: "Gorditas", serif;
 }
 h1{
-  color:#a47148;
+  color:color.$heading-1;
   font-size:2.4rem;
   font-weight:600;
   letter-spacing:0.5px;
 }
 h2{
   font-size:1.8rem;
-  color:#4b2f1d;
+  color:color.$heading-2;
 }
 h3{
   display:inline-block;
@@ -41,12 +42,12 @@ h3{
   margin-top:2rem;
   margin-bottom:0.5rem;
   font-size:1.3rem;
-  color:#7a5a42;
+  color:color.$heading-3;
   letter-spacing:0.03em;
 }
 .dish-name{
   font-size:1.1rem;
-  color:#3f2a1f;
+  color:color.$text-dark;
   font-weight:600;
 }
 p{
@@ -94,7 +95,7 @@ p{
     }
   }
   section{
-    background: #fffaf5;
+    background: color.$surface;
     padding:1.5rem;
     margin-bottom:2rem;
     border-radius:10px;
@@ -115,7 +116,7 @@ p{
 }
 
 .admin-panel{
-  background: #fffaf5;
+  background: color.$surface;
   padding:2rem;
   border-radius:10px;
    box-shadow:0 4px 12px rgba(0,0,0,0.08);
@@ -129,7 +130,7 @@ p{
 .card, .review-card, .admin-cards{
   max-width:900px;
   width:100%;
-  background-color:#fffaf5;
+  background-color:color.$surface;
   padding:0.5rem;
   margin:1rem auto;
   border-radius:12px;
@@ -152,8 +153,8 @@ p{
   font-size:0.9rem;
   padding:0.2rem 0.6rem;
   border-radius:999px;
-  background:#e8d5c4;
-  color:#3b2416;
+  background:color.$surface-alt;
+  color:color.$text-dark;
   margin-bottom:0.5rem;
 }
 .description{
@@ -165,7 +166,7 @@ p{
 
 /*header delen: navigering och café namn*/
 header{
-  background: #a47148;
+  background: color.$primary;
   text-align:center;
   padding:1.5rem 1rem;
   nav{
@@ -180,7 +181,7 @@ header{
       padding:0;
     }
     a{
-      color:#fffaf5;
+      color:color.$surface;
       text-decoration:none;
       font-weight:500;
       font-size:1.5rem;
@@ -201,7 +202,7 @@ header{
 }
 
 .title, .tagline{
-  color: #5c3b28;
+  color: color.$text;
   margin-bottom: 0.2rem;
   text-align:center;
 }
@@ -215,12 +216,12 @@ footer{
   justify-content:space-between;
   align-items:center;
   padding:1rem 2rem;
-  background: #a47148;
-  color:#fffaf5;
+  background: color.$primary;
+  color:color.$surface;
 }
 .admin-link{
   font-size:0.9rem;
-  color:#fffaf5;
+  color:color.$surface;
   text-decoration:none;
   opacity:0.7;
   &:hover{
@@ -231,10 +232,15 @@ footer{
 
 /*felmeddelanden:*/
 .success{
-  color:green;
+  color:color.$success;
 }
 .error{
-  color:red;
+  color:color.$error;
+}
+.loading{
+  color:color.$loading;
+  font-style:italic;
+  font-weight:bold;
 }
 /*formulär: gemensam, lägg till rätt, logga in, */
 .form{
@@ -261,28 +267,28 @@ footer{
   }
   textarea{
     min-height:120px;
-    background: #fffaf5;
-    color: #3b2416;
+    background: color.$surface;
+    color: color.$text-dark;
     font-family: "Poppins", sans-serif;
     resize: vertical;
   }
 }
 
 input:focus, textarea:focus, select:focus{
-  border-color:#a47148;
+  border-color:color.$primary;
   box-shadow: 0 0 8px rgba(164, 113, 72, 0.3);
 }
 
 /*knappars utseende*/
 button{
-  background: #a47148;
+  background: color.$primary;
   color:white;
   border:none;
   padding:0.5rem 1rem;
   border-radius:10px;
   cursor:pointer;
   &:hover{
-    background-color:#8b5e3c;
+    background-color:color.$primary-hover;
   }
 }
 
@@ -323,7 +329,7 @@ button{
 
 //startsida
 .start-page, .opening-hours, .social-section{
-  background: #fffaf5;
+  background: color.$surface;
   padding:1.8rem;
   border-radius:10px;
   box-shadow:0 4px 12px rgba(0,0,0,0.2);
@@ -341,8 +347,8 @@ button{
     padding:0.8rem 0.5rem;
     border-radius: 10px;
     text-decoration:none;
-    background:#a47148;
-    color:#fffaf5;
+    background:color.$primary;
+    color:color.$surface;
     box-shadow: 0 5px 6px rgba(0,0,0,0.6);
     transition: all 0.2s ease;
     &:active{
@@ -350,8 +356,8 @@ button{
       box-shadow: 0 4px 5px rgba(0,0,0,0.6);
     }
     &:hover{
-      background:#d3935f;
-      color:#fffaf5;
+      background:color.$accent;
+      color:color.$surface;
     }
   }
 }
@@ -393,10 +399,10 @@ button{
     text-decoration:none;
     i{
       font-size:2rem;
-      color: blue;
+      color: color.$social-icon;
       transition: 0.2s ease;
       &:hover{
-        color: #8b6b4a;
+        color: color.$primary-hover;
       transform: scale(1.1);
       }
     }
@@ -422,22 +428,22 @@ button{
     font-size:1.2rem;
     font-weight:500;
     transition: all 0.2s ease;
-    color:#5c3b28;
+    color:color.$text;
 
     &:hover{
-      background: #e8d5c4;
-      color:#3b2416;
+      background: color.$surface-alt;
+      color:color.$text-dark;
       text-decoration:none;
     }
   }
 }
 #logoutBtn{
-  color: #fffaf5;
+  color: color.$surface;
   text-decoration:none;
   padding:0;
   &:hover{
     background:transparent;
-    color:#e8d5c4;
+    color:color.$surface-alt;
     text-decoration:underline;
   }
 }
