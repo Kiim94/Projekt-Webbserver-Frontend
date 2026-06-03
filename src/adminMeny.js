@@ -98,6 +98,9 @@ async function editItem(event){
     editingId = id;
     updateFormUI();
 
+    //lade till scroll så att vid klick på edit så rullas skärmen upp.
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
     document.getElementById("name").value = item.name;
     document.getElementById("price").value = item.price;
     document.getElementById("category").value = item.category;

@@ -27,6 +27,7 @@
     <p>Lämna gärna en recension om ditt besök hos oss!</p>
     <p id="smthWrong"></p>
         <form id="reviewForm" class="form">
+          <label for="rating">Betyg</label>
           <select name="rating" id="rating">
             <option value="" disabled selected>Välj betyg</option>
             <option value="1">⭐</option>
@@ -35,7 +36,9 @@
             <option value="4">⭐⭐⭐⭐</option>
             <option value="5">⭐⭐⭐⭐⭐</option>
           </select>
+          <label for="name">Ditt namn</label>
           <input id="name" placeholder="Namn">
+          <label for="message">Din recension</label>
           <textarea id="message" placeholder="Din recension"></textarea>
           <button>Skicka</button>
         </form>

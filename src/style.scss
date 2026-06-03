@@ -202,12 +202,14 @@ header{
 }
 
 .title, .tagline{
-  color: color.$text;
+  color: color.$heading-1;
   margin-bottom: 0.2rem;
   text-align:center;
 }
+
 .tagline{
     margin-bottom:1.5rem;
+    font-size:1.1rem;
 }
 
 //footer
@@ -252,6 +254,14 @@ footer{
   button{
     align-self:flex-start;
     min-width:120px;
+    letter-spacing:0.1rem;
+  }
+  label{
+    display: block;
+    font-size: 0.95rem;
+    font-weight:500;
+    color:color.$text-dark;
+    letter-spacing:0.15rem;
   }
 }
 
@@ -428,11 +438,11 @@ button{
     font-size:1.2rem;
     font-weight:500;
     transition: all 0.2s ease;
-    color:color.$text;
+    color:color.$surface;
 
     &:hover{
-      background: color.$surface-alt;
-      color:color.$text-dark;
+
+      color:color.$text-very-dark;
       text-decoration:none;
     }
   }
@@ -449,7 +459,7 @@ button{
 }
 @media (max-width: 759px){
   html{
-    font-size:14px;
+    font-size:15px;
   }
   .menu-layout{
     grid-template-columns:1fr;
@@ -462,6 +472,6 @@ button{
 }
 @media (max-width: 599px){
   html{
-    font-size:12px;
+    font-size:14px;
   }
 }
