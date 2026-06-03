@@ -5,7 +5,7 @@
 @mixin textarea-input{
   width:100%;
   padding:0.9rem;
-  border:2px solid color.$surface-alt;
+  border:2px solid color.$accent;
   border-radius:10px;
   font-size: 1rem;
   outline:none;
@@ -271,13 +271,14 @@ footer{
     box-shadow: 0 6px 18px rgba(43, 29, 20, 0.08);
     transition: all 0.2s ease;
     box-sizing:border-box;
+    background: white;
     &:hover{
-      background-color:rgb(214, 197, 197);
+      background-color:rgb(226, 221, 221);
     }
   }
   textarea{
     min-height:120px;
-    background: color.$surface;
+    
     color: color.$text-dark;
     font-family: "Poppins", sans-serif;
     resize: vertical;

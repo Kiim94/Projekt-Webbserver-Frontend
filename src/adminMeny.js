@@ -101,7 +101,7 @@ async function editItem(event){
     //lade till scroll så att vid klick på edit så rullas skärmen upp.
     window.scrollTo({ top: 0, behavior: "smooth" });
 
-    document.getElementById("name").value = item.name;
+    document.getElementById("dish-name").value = item.name;
     document.getElementById("price").value = item.price;
     document.getElementById("category").value = item.category;
     document.getElementById("description").value = item.description;
@@ -115,7 +115,7 @@ if(form){
         e.preventDefault();
         const token = sessionStorage.getItem("token");
         const body = {
-            name:  document.getElementById("name").value.trim(),
+            name:  document.getElementById("dish-name").value.trim(),
             price: Number(document.getElementById("price").value),
             category:  document.getElementById("category").value,
             description:  document.getElementById("description").value.trim(),
