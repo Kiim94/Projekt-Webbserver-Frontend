@@ -1,7 +1,8 @@
 import { getMeny } from "./fetch.js";
 import './style.scss'
 const output = document.getElementById("output");
-//const menyContainer = document.getElementById("app");
+
+//olika containers beroende på vilken menyrätt
 const hotWrap = document.getElementById("hot");
 const coldWrap = document.getElementById("cold");
 const sandwichWrap = document.getElementById("sandwich");
@@ -32,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //skriv ut maträtter till meny
 async function loadMeny(){
   try{
+    //pga render: en "laddar" för att användare ska förstå att menyn laddas
     output.classList.add("loading");
     output.innerText="Väcker servern och hämtar menyn..."
     output.classList.remove("error");
@@ -40,14 +42,13 @@ async function loadMeny(){
     output.classList.remove("loading");
     output.innerText="";
 
-    
-
     //istället för att skriva ut hela menyn huller om buller, gör kategorier
     const hot = meny.filter(item => item.category === "hot_drinks");
     const cold = meny.filter(item => item.category === "cold_drinks");
     const sandwiches = meny.filter(item => item.category === "sandwich");
     const other = meny.filter(item => item.category === "other");
 
+    //map() för att skapa ny array enligt nedan. join() för att skapa lista
     const renderItems = (items) => items.map(item => `
       <li class="meny-item">
       <div class="row">
@@ -60,6 +61,7 @@ async function loadMeny(){
           <p class="allergens">Allergener: ${item.allergens || "inga"}</p>
       </li>`).join("");
       
+      //flytta rätt meny-rätter till rätt plats
       hotWrap.innerHTML = renderItems(hot);
       coldWrap.innerHTML = renderItems(cold);
       sandwichWrap.innerHTML = renderItems(sandwiches);

@@ -1,5 +1,5 @@
 //fetch: för att hämta data från backend
-
+//istället för att hårdkoda url: denna nedan
 const url = import.meta.env.VITE_CAFE_URL;
 
 //visa menyn. Ingen metod behövs
@@ -11,6 +11,7 @@ export async function getMeny(){
     return response.json();
 }
 
+//för att kunna skapa maträtt: token behövs (måste vara inloggad)
 export async function createMenyItem(data, token){
     const response = await fetch(url + "/meny", {
         method:"POST",
@@ -27,6 +28,7 @@ export async function createMenyItem(data, token){
     return respData;
 }
 
+//uppdatera meny-rätt. Token behövs, samt id för rätten när det är PUT
 export async function updateItem(id, data, token){
     const response = await fetch(url + "/meny/" + id,{
         method: "PUT",

@@ -3,6 +3,7 @@ import { login } from "./fetch.js";
 
 document.addEventListener("DOMContentLoaded", initLogin);
 
+//logga in
 function initLogin(){
     const form = document.getElementById("loginForm");
     const message = document.getElementById("message");
@@ -15,7 +16,10 @@ function initLogin(){
         message.innerText = "Loggar in...";
 
         const username = document.getElementById("username").value.trim();
+
+        //kan innehålla siffror och bokstäver, så lösenord har ingen trim()
         const password = document.getElementById("password").value;
+
         if(!username || !password){
             message.innerText = "Fyll i alla fält!";
             message.classList.remove("loading");
@@ -27,6 +31,7 @@ function initLogin(){
             message.classList.remove("error", "success");
             const data = await login(username, password);
             
+            //om data och token finns, användaren loggas in
             if(data && data.token){
                 sessionStorage.setItem("token", data.token);
                 message.innerText = "Inloggad!";

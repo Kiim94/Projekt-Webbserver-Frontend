@@ -8,8 +8,9 @@ import { initLogOut } from "./auth.js";
 const appDiv = document.getElementById("appAdmin");
 const form = document.getElementById("addForm");
 const message = document.getElementById("message");
+
+//editingId är null till att börja med. Sparas över när den används senare med meny-rättens id
 let editingId = null;
-const url = import.meta.env.VITE_CAFE_URL;
 
 //hamburgermeny
 const adminBtn = document.getElementById("adminMenuBtn");
@@ -34,6 +35,7 @@ const categoryNames = {
     other: "Övrigt"
 };
 
+//kontroll: går det att hämta token? om inte, skickas tillbaka till inloggningssida
 function requireAuth(){
     console.log("ADMIN PAGE LOADED");
     const token = sessionStorage.getItem("token");
@@ -88,6 +90,8 @@ if(appDiv){
 }
 //radera från menyn
 async function deleteItem(event){
+
+    //hämta meny-rättens id
     const id = event.target.dataset.id;
     const token = sessionStorage.getItem("token");
     try{
@@ -101,15 +105,21 @@ async function deleteItem(event){
 
 //edit
 async function editItem(event){
+    //hämta meny-rättens id
     const id = event.target.dataset.id;
+
     const meny = await getMeny();
+
+    //från den hämtade menyn, hitta det id som matchar
     const item = meny.find(i => i._id === id);
+
     editingId = id;
     updateFormUI();
 
     //lade till scroll så att vid klick på edit så rullas skärmen upp.
     window.scrollTo({ top: 0, behavior: "smooth" });
 
+    //spara över så det som fylls i formuläret blir det nya. Inget nytt? Då ändras inget
     document.getElementById("dish-name").value = item.name;
     document.getElementById("price").value = item.price;
     document.getElementById("category").value = item.category;

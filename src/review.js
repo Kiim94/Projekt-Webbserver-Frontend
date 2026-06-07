@@ -20,10 +20,15 @@ document.addEventListener("DOMContentLoaded", () => {
     loadReviews();
 })
 
+//laddar in recensioner
 async function loadReviews(){
     try{
         //hämta recensioner
         const reviews = await getReviews();
+        //skapa recensioner med element nedan: map() för att skapa ny array inuti reviewContainer
+        //join för att göra lång lista
+        //repeat(rev.rating) -> repetera antalet stjärnor efter vilen siffra recensent valde
+        //ex: valt 3, visar ⭐⭐⭐
         reviewContainer.innerHTML = reviews.map(rev => `
         <div class="review-card">
             <h3>${rev.name}</h3>
@@ -38,30 +43,34 @@ async function loadReviews(){
     }
 }
 
+//skapa recension
 reviewForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const name = document.getElementById("name").value.trim();
     const message = document.getElementById("message").value.trim();
+    //ingen trim pga att det är ett nummer
     const rating = Number(document.querySelector("#rating").value);
     
     wrongMessage.classList.remove("error", "success");
 
     try{
-
+        //visa felmeddelande om ngt fält inte är ifyllt, avbryt så inget skickas
         if(!name ||!message ||!rating){
             wrongMessage.classList.add("error");
             wrongMessage.innerHTML = "Fyll i alla fält innan du skickar din recension"
             return;
         }
-
+        //vänta på att kunna skicka POST request till backend (se fetch.js)
         await postReview({ name, message, rating });
 
+        //återställ formulär
         reviewForm.reset();
 
         wrongMessage.classList.add("success");
         wrongMessage.innerHTML = "Tack för din recension!"
 
+        //visa meddelande ett tag, ta bort sedan
         setTimeout(() => {
             wrongMessage.innerHTML = "";
             wrongMessage.classList.remove("error", "success");
