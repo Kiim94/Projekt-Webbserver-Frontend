@@ -1,6 +1,16 @@
 import { register, getAdmins, deleteAdmin } from "./fetch.js";
 import { initLogOut } from "./auth.js";
 import './style.scss'
+
+//hamburgermeny
+const adminBtn = document.getElementById("adminMenuBtn");
+const adminMenu = document.getElementById("adminMenu");
+
+adminBtn.addEventListener("click", () => {
+  adminBtn.classList.toggle("active");
+  adminMenu.classList.toggle("active");
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     initLogOut();
 })

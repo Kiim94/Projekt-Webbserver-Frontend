@@ -11,6 +11,15 @@ const message = document.getElementById("message");
 let editingId = null;
 const url = import.meta.env.VITE_CAFE_URL;
 
+//hamburgermeny
+const adminBtn = document.getElementById("adminMenuBtn");
+const adminMenu = document.getElementById("adminMenu");
+
+adminBtn.addEventListener("click", () => {
+  adminBtn.classList.toggle("active");
+  adminMenu.classList.toggle("active");
+});
+
 document.addEventListener("DOMContentLoaded", () =>{
     if(!requireAuth()) return;
     loadMeny();

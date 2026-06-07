@@ -7,9 +7,17 @@ const coldWrap = document.getElementById("cold");
 const sandwichWrap = document.getElementById("sandwich");
 const otherWrap = document.getElementById("other");
 
+//hamburgermeny
+const menuBtn = document.getElementById("menuBtn");
+const navMenu = document.getElementById("navMenu");
+
+menuBtn.addEventListener("click", () => {
+    menuBtn.classList.toggle("active");
+    navMenu.classList.toggle("active");
+})
+
 //kategori namn på engelska: inte vackra
 //skriver över här med svenska
-
 const categoryNames = {
   hot_drinks: "Varma drycker",
   cold_drinks: "Kalla drycker",
